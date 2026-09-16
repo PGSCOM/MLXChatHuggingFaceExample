@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: macos-26
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       # Xcode 26 no longer bundles the Metal compiler; mlx-swift needs it to build its
       # kernels. Ignore failure: some runner images already have it preinstalled.
@@ -21,7 +21,7 @@ jobs:
         run: xcodebuild -downloadComponent MetalToolchain || true
 
       - name: Cache resolved Swift packages
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: build/SourcePackages
           key: spm-${{ hashFiles('mlx-swift-examples.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
@@ -46,7 +46,7 @@ jobs:
           cp -R "$app" Payload/
           zip -qry MLXChatHuggingFace-unsigned.ipa Payload
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: MLXChatHuggingFace-unsigned
           path: MLXChatHuggingFace-unsigned.ipa
