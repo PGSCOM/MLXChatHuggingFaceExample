@@ -1,5 +1,9 @@
 # MLX Swift Examples
 
+> This is a **fork** of upstream `ml-explore/mlx-swift-examples` that adds a
+> free-form Hugging Face model catalog to MLXChatExample and an unsigned-`.ipa` CI workflow.
+> See [FORK.md](FORK.md) for what changed and why.
+
 Example [MLX Swift](https://github.com/ml-explore/mlx-swift) programs.  The language model
 examples use models implemented in [MLX Swift LM](https://github.com/ml-explore/mlx-swift-lm).
 
