@@ -13,6 +13,8 @@ struct ChatToolbarView: View {
     /// View model containing the chat state and controls
     @Bindable var vm: ChatViewModel
 
+    @State private var isAddingModel = false
+
     var body: some View {
         // Display error message if present
         if let errorMessage = vm.errorMessage {
@@ -33,12 +35,22 @@ struct ChatToolbarView: View {
             )
         }
 
-        // Model selection picker
+        // Model selection picker (built-in presets plus any custom Hugging Face repos)
         Picker("Model", selection: $vm.selectedModel) {
-            ForEach(MLXService.availableModels) { model in
+            ForEach(vm.allModels) { model in
                 Text(model.displayName)
                     .tag(model)
             }
+        }
+
+        // Add a custom model by Hugging Face repo id or URL
+        Button {
+            isAddingModel = true
+        } label: {
+            Image(systemName: "plus")
+        }
+        .sheet(isPresented: $isAddingModel) {
+            AddModelView(vm: vm)
         }
     }
 }

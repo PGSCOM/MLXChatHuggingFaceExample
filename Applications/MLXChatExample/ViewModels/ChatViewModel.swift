@@ -32,6 +32,22 @@ class ChatViewModel {
     /// Currently selected language model for generation
     var selectedModel: LMModel = MLXService.availableModels.first!
 
+    /// Store for user-added Hugging Face model repos, shown alongside the built-in presets.
+    let customModels = CustomModelStore()
+
+    /// Built-in presets plus any custom models the user has added.
+    var allModels: [LMModel] {
+        MLXService.availableModels + customModels.models
+    }
+
+    /// Removes a custom model, falling back to the first preset if it was selected.
+    func removeCustomModel(_ entry: CustomModelStore.Entry) {
+        customModels.remove(entry)
+        if selectedModel.name == entry.id {
+            selectedModel = MLXService.availableModels.first!
+        }
+    }
+
     /// Manages image and video attachments for the current message
     var mediaSelection = MediaSelection()
 

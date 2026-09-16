@@ -324,6 +324,7 @@
 			membershipExceptions = (
 				MLXChatExample/ChatView.swift,
 				MLXChatExample/MLXChatExampleApp.swift,
+				MLXChatExample/Models/CustomModelStore.swift,
 				MLXChatExample/Models/LMModel.swift,
 				MLXChatExample/Models/Message.swift,
 				MLXChatExample/Services/MLXService.swift,
@@ -336,6 +337,7 @@
 				MLXChatExample/Views/MediaPreviewView.swift,
 				MLXChatExample/Views/MessageView.swift,
 				MLXChatExample/Views/PromptField.swift,
+				MLXChatExample/Views/Toolbar/AddModelView.swift,
 				MLXChatExample/Views/Toolbar/ChatToolbarView.swift,
 				MLXChatExample/Views/Toolbar/DownloadProgressView.swift,
 				MLXChatExample/Views/Toolbar/ErrorView.swift,
